@@ -13,7 +13,7 @@
 				name="email"
 				formControlName="email">
 			<mat-error *ngIf="signupForm.controls['email'].errors?.required &&
-                signupForm.controls['email'].touched">Field must not be empty</mat-error>
+                signupForm.controls['email'].touched">Email must not be empty</mat-error>
             <mat-error *ngIf="!(signupForm.controls['email'].errors?.required)">E-mail is invalid.</mat-error>
         </mat-form-field>
 
@@ -30,7 +30,14 @@
                     name="password">
                 <mat-error
                     *ngIf="signupForm.get('pw').get('password').getError('required')
-                    && signupForm.get('pw').get('password').touched">Has to be at least 8 characters long</mat-error>
+                    && signupForm.get('pw').get('password').touched">
+                    Password is required
+                </mat-error>
+
+                <mat-error
+                    *ngIf="signupForm.get('pw').get('password').getError('minlength')">
+                    Password is too short
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field hintLabel="Please re-enter your password">
@@ -41,7 +48,7 @@
                     placeholder="confirmPassword"
                     [errorStateMatcher]="matcher"
                     name="password Confirmation">
-                <mat-error *ngIf="signupForm.get('pw').get('confirmPassword').getError('notSame')" >Password not matched</mat-error>
+                <mat-error *ngIf="signupForm.get('pw').getError('notSame')" >Password not matched</mat-error>
             </mat-form-field>
         </div>
         <button type="submit" mat-raised-button color="primary">Submit</button>

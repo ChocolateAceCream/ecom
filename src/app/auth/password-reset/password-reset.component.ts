@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, NgForm, FormBuilder} from '@angular/forms';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    selector: 'app-password-reset',
+    templateUrl: './password-reset.component.html',
+    styleUrls: ['./password-reset.component.css']
 })
-export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
+export class PasswordResetComponent implements OnInit {
+    passwordResetForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder) {
-        this.loginForm = this.formBuilder.group({
+        this.passwordResetForm = this.formBuilder.group({
             email: ['', [Validators.email,Validators.required]],
-            password: ['', [Validators.required]]
         });
     }
 
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
 	}
 
     onSubmit() {
-        console.log(this.loginForm);
+        console.log(this.passwordResetForm);
     }
 
 }

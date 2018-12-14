@@ -1,6 +1,7 @@
 <section class="signup-form">
     <form
          fxLayout="column"
+         fxLayoutGap="10px"
          fxLayoutAlign="center center"
          [formGroup]="signupForm"
          (ngSubmit)="onSubmit()">
@@ -20,6 +21,7 @@
         <div
             fxLayout="column"
             fxLayoutAlign="center center"
+            fxLayoutGap="10px"
             formGroupName='pw' >
             <mat-form-field hintLabel="Should be at least 8 characters long">
                 <input
@@ -28,6 +30,9 @@
                     placeholder="Your password"
                     formControlName="password"
                     name="password">
+                <mat-hint
+                    align="end">{{signupForm.get('pw').get('password').value?.length}}
+                / 8</mat-hint>
                 <mat-error
                     *ngIf="signupForm.get('pw').get('password').getError('required')
                     && signupForm.get('pw').get('password').touched">
@@ -51,6 +56,11 @@
                 <mat-error *ngIf="signupForm.get('pw').getError('notSame')" >Password not matched</mat-error>
             </mat-form-field>
         </div>
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <mat-checkbox ngModle name='agree' required color="primary">Agree to Terms and Conditions.</mat-checkbox>
+        <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="signupForm.invalid">Submit</button>
     </form>
 </section>

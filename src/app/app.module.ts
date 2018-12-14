@@ -12,6 +12,7 @@ import { MaterialModule} from './material.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
         SignupComponent,
         LoginComponent,
         HomeComponent,
+        PasswordResetComponent,
     ],
     imports: [
         BrowserModule,

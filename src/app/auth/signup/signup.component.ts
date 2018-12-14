@@ -1,20 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup,FormGroupDirective, Validators, FormControl, NgForm, FormBuilder} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean{
+        const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+        const invalidParent = !!(control.parent && control && control.parent.invalid && control.parent.dirty);
+
+        return (invalidCtrl || invalidParent);
+    }
+}
 
 @Component({
-    selector: 'app-signup',
-    templateUrl: './signup.component.html',
-    styleUrls: ['./signup.component.css']
+	selector: 'app-signup',
+	templateUrl: './signup.component.html',
+	styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+	signupForm: FormGroup;
 
-    constructor() { }
+    matcher = new MyErrorStateMatcher();
 
-    ngOnInit() {
+    constructor(private formBuilder: FormBuilder) {
+        this.signupForm = this.formBuilder.group({
+            pw: this.formBuilder.group({
+                password: ['', [Validators.required, Validators.minLength(8)]],
+                confirmPassword: ['']
+            }, { validator: this.checkPasswords}),
+            email: ['', [Validators.email,Validators.required]]
+        });
     }
 
-    onSubmit(form: NgForm) {
-        console.log(form);
+	ngOnInit() {
+	}
+
+    checkPasswords(group: FormGroup) {
+        let pass = group.controls.password.value;
+        let confirmPass = group.controls.confirmPassword.value
+
+        return pass === confirmPass? null: { notSame: true}
+    }
+
+    onSubmit() {
+        console.log(this.signupForm);
     }
 
 }

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -27,7 +27,7 @@ import { HomeComponent } from './home/home.component';
         MaterialModule,
         AppRoutingModule,
         FlexLayoutModule,
-        FormsModule
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

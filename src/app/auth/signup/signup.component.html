@@ -1,46 +1,49 @@
 <section class="signup-form">
-    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm"
-        (ngSubmit)="onSubmit(f)">
+    <form
+         fxLayout="column"
+         fxLayoutAlign="center center"
+         [formGroup]="signupForm"
+         (ngSubmit)="onSubmit()">
+
         <mat-form-field>
             <input
 				type="email"
 				matInput
 				placeholder="Your email"
-				ngModel
 				name="email"
-				email
-				required
-				#emailInput="ngModel">
-            <mat-error *ngIf="emailInput.hasError('required')">Field must not be
-                empty</mat-error>
-            <mat-error *ngIf="!emailInput.hasError('required')">E-mail is invalid.</mat-error>
+				formControlName="email">
+			<mat-error *ngIf="signupForm.controls['email'].errors?.required &&
+                signupForm.controls['email'].touched">Field must not be empty</mat-error>
+            <mat-error *ngIf="!(signupForm.controls['email'].errors?.required)">E-mail is invalid.</mat-error>
         </mat-form-field>
-        <mat-form-field hintLabel="Should be at least 8 characters long">
-            <input
-                type="password"
-                matInput
-                placeholder="Your password"
-                ngModel
-                required
-                minlength="8"
-                #pwInput="ngModel"
-                name="password">
-            <mat-hint align="end">
-                {{ pwInput.value?.length}} / 8
-            </mat-hint>
-            <mat-error>Has to be at least 8 characters long</mat-error>
-        </mat-form-field>
-        <mat-form-field hintLabel="Please re-enter your password">
-            <input
-                type="password"
-                matInput
-                placeholder="Password Confirmation"
-                ngModel
-                required
-                #pwConfirmInput="ngModel"
-                name="password Confirmation">
-            <mat-error *ngIf="pwInput.value !==pwConfirmInput.value" >Password not matched</mat-error>
-        </mat-form-field>
+
+        <div
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            formGroupName='pw' >
+            <mat-form-field hintLabel="Should be at least 8 characters long">
+                <input
+                    type="password"
+                    matInput
+                    placeholder="Your password"
+                    formControlName="password"
+                    name="password">
+                <mat-error
+                    *ngIf="signupForm.get('pw').get('password').getError('required')
+                    && signupForm.get('pw').get('password').touched">Has to be at least 8 characters long</mat-error>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Please re-enter your password">
+                <input
+                    type="password"
+                    matInput
+                    formControlName="confirmPassword"
+                    placeholder="confirmPassword"
+                    [errorStateMatcher]="matcher"
+                    name="password Confirmation">
+                <mat-error *ngIf="signupForm.get('pw').get('confirmPassword').getError('notSame')" >Password not matched</mat-error>
+            </mat-form-field>
+        </div>
         <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
 </section>

@@ -13,6 +13,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+
+import { SlideshowModule } from 'ng-simple-slideshow';
+import { SlideComponent } from './navigation/slide/slide.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +26,9 @@ import { PasswordResetComponent } from './auth/password-reset/password-reset.com
         LoginComponent,
         HomeComponent,
         PasswordResetComponent,
+        HeaderComponent,
+        SidenavListComponent,
+        SlideComponent,
     ],
     imports: [
         BrowserModule,
@@ -29,7 +37,8 @@ import { PasswordResetComponent } from './auth/password-reset/password-reset.com
         MaterialModule,
         AppRoutingModule,
         FlexLayoutModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SlideshowModule
     ],
     providers: [],
     bootstrap: [AppComponent]

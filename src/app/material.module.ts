@@ -4,6 +4,10 @@ import {
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSnackBarModule,
     MatCheckboxModule
 } from '@angular/material';
 
@@ -13,6 +17,10 @@ import {
         MatIconModule,
         MatFormFieldModule,
         MatCheckboxModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        MatSnackBarModule,
         MatInputModule
     ],
     exports: [
@@ -20,6 +28,10 @@ import {
         MatIconModule,
         MatFormFieldModule,
         MatCheckboxModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        MatSnackBarModule,
         MatInputModule
     ]
 })

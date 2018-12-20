@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <div fxFlex fxlayout fxLayoutAlign="flex-end" fxHide.xs>
+            <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+                <li>
+                    <a routerLink="/signup">Signup</a>
+                </li>
+                <li>
+                    <a routerLink="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <div class="logo">
+            <img src="../../../assets/logo.jpg" alt="logo">
+        </div>
+        <div>
+            Website Name
+        </div>
+        <div fxFlex fxlayout fxLayoutAlign="flex-end" fxHide.xs>
+            <div>
+                <button mat-icon-button (click)="onToggleSidenav()">
+                    <mat-icon>
+                        menu
+                    </mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

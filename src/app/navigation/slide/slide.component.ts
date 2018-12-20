@@ -11,7 +11,7 @@ import { MatSnackBar} from '@angular/material';
 export class SlideComponent implements OnInit {
     imageUrls: (string | IImage)[] = [
         {url: 'assets/slide.png', caption:"the first slogan", clickAction: () => this.openRoute1() },
-        {url: 'assets/slide.png', caption:"take $5 off by applying code BGTWAG", clickAction: () => this.openRoute2()},
+        {url: 'assets/slide.png', caption:"take $5 off by applying code <em><strong>BGTWAG</strong></em>", clickAction: () => this.openRoute2()},
 
     ];
     height: string = '45px';
@@ -23,7 +23,7 @@ export class SlideComponent implements OnInit {
     stopAutoPlayOnSlide: boolean = true;
     showCaptions: boolean = true;
     captionColor: string = '#FFF';
-    captionBackground: string = 'black';
+    captionBackground: string = 'red';
 
     promotCode: string = "BGTWAG"
 

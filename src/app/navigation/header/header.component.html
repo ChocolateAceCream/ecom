@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
+<mat-toolbar color="primary" style="background: black">
+    <mat-toolbar-row style="border-bottom: 1px solid gray">
         <div fxFlex fxlayout fxLayoutAlign="flex-end" fxHide.xs>
             <ul fxLayout fxLayoutGap="10px" class="navigation-items">
                 <li>
@@ -12,20 +12,31 @@
         </div>
     </mat-toolbar-row>
     <mat-toolbar-row>
-        <div class="logo">
-            <img src="../../../assets/logo.jpg" alt="logo">
+        <div fxFlex fxLayout fxLayoutAlign="flex-start center"
+                             fxLayoutGap="20px">
+                Website Name
         </div>
-        <div>
-            Website Name
-        </div>
-        <div fxFlex fxlayout fxLayoutAlign="flex-end" fxHide.xs>
-            <div>
+
+        <div fxLayoutAlign="flex-end" fxHide.xs>
+            <div fxLayout class="searchContainer">
+                <input matInput placeholder="Search..." class="searchBox">
                 <button mat-icon-button (click)="onToggleSidenav()">
-                    <mat-icon>
-                        menu
-                    </mat-icon>
+                    <mat-icon>search</mat-icon>
                 </button>
             </div>
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>
+                    menu
+                </mat-icon>
+            </button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

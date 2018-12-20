@@ -1,27 +1,41 @@
 a {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
 a:hover,
 a:active {
-    color: lightgray;
+	color: lightgray;
 }
 
 .navigation-items {
-    list-style: none;
+	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
 .nav-caption {
-    display: inline-block;
-    padding-left: 8px;
+	display: inline-block;
+	padding-left: 8px;
 }
 
-.logo img {
-    position: center;
-    width: 100px;
-    height: 55px;
-    background: #3f51b5;
+.searchBox {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0.5rem;
+	color: black;
+}
+.searchContainer {
+	background-color: white;
+	color: black;
+	display: grid;
+	grid-template-columns:1.5rem 4fr 1fr;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.searchBox:focus {
+    width:400px;
+    color: red;
 }

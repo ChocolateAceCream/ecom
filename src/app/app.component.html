@@ -1,12 +1,18 @@
+<div>
+    <app-slide></app-slide>
+    <app-header></app-header>
+</div>
 <mat-sidenav-container>
-    <mat-sidenav #sidenav role="navigation">
-        <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
+    <mat-sidenav
+        mode="side"
+        opened >
+        <div class="side-nav-content">
+            <app-sidenav-list></app-sidenav-list>
+        </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-slide></app-slide>
-        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-        <main>
+        <div class="inside">
             <router-outlet></router-outlet>
-        </main>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

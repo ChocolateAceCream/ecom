@@ -18,6 +18,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { SlideComponent } from './navigation/slide/slide.component';
+import { MostPopularComponent } from './product-list/most-popular/most-popular.component';
+import { NewReleaseComponent } from './product-list/new-release/new-release.component';
+import { ViewAllComponent } from './product-list/view-all/view-all.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +32,9 @@ import { SlideComponent } from './navigation/slide/slide.component';
         HeaderComponent,
         SidenavListComponent,
         SlideComponent,
+        MostPopularComponent,
+        NewReleaseComponent,
+        ViewAllComponent,
     ],
     imports: [
         BrowserModule,

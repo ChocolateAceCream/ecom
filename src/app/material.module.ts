@@ -8,6 +8,9 @@ import {
     MatToolbarModule,
     MatListModule,
     MatSnackBarModule,
+    MatTreeModule,
+    MatTabsModule,
+    MatCardModule,
     MatCheckboxModule
 } from '@angular/material';
 
@@ -21,6 +24,9 @@ import {
         MatToolbarModule,
         MatListModule,
         MatSnackBarModule,
+        MatTreeModule,
+        MatTabsModule,
+        MatCardModule,
         MatInputModule
     ],
     exports: [
@@ -32,6 +38,9 @@ import {
         MatToolbarModule,
         MatListModule,
         MatSnackBarModule,
+        MatTreeModule,
+        MatTabsModule,
+        MatCardModule,
         MatInputModule
     ]
 })

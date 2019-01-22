@@ -2,11 +2,14 @@
     <mat-toolbar-row style="border-bottom: 1px solid gray">
         <div fxFlex fxlayout fxLayoutAlign="flex-end" fxHide.xs>
             <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-                <li>
+                <li *ngIf="!isAuth">
                     <a routerLink="/signup">Signup</a>
                 </li>
-                <li>
+                <li *ngIf="!isAuth">
                     <a routerLink="/login">Login</a>
+                </li>
+                <li *ngIf="isAuth">
+                    <a style="cursor: pointer" (click)="onLogout()" >Logout</a>
                 </li>
             </ul>
         </div>

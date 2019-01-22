@@ -22,6 +22,8 @@ import { MostPopularComponent } from './product-list/most-popular/most-popular.c
 import { NewReleaseComponent } from './product-list/new-release/new-release.component';
 import { ViewAllComponent } from './product-list/view-all/view-all.component';
 
+import { AuthService } from './auth/auth.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -46,7 +48,8 @@ import { ViewAllComponent } from './product-list/view-all/view-all.component';
         ReactiveFormsModule,
         SlideshowModule
     ],
-    providers: [],
+    //provide service in app module so entire app use same instance
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

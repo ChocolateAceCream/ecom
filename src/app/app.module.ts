@@ -23,6 +23,7 @@ import { NewReleaseComponent } from './product-list/new-release/new-release.comp
 import { ViewAllComponent } from './product-list/view-all/view-all.component';
 
 import { AuthService } from './auth/auth.service';
+import { ProductService } from './product-list/product.service';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,7 @@ import { AuthService } from './auth/auth.service';
         SlideshowModule
     ],
     //provide service in app module so entire app use same instance
-    providers: [AuthService],
+    providers: [AuthService,ProductService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

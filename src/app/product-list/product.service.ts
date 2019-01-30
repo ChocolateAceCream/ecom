@@ -1,4 +1,6 @@
 import { Product } from './product.model';
+import { Subject } from 'rxjs';
+
 export class ProductService {
     private siz: number[] = [40.5,41,42,42.5,43,44,44.5];
     //we dont want this array to be modifiied, so we pass it as a private
@@ -14,11 +16,26 @@ export class ProductService {
         {id: "AA7293001", name: "Air Max90", price: 400, brand: "OFF WHITE", size: this.siz, url: "/assets/img/1548202997178.jpg"}
     ];
 
+    private cartProducts: Product[] = [];
+
+    countChange = new Subject<number>();
+
     getMostPopularProducts() {
         //the slice method will create a new copy of array,so original one wont
         //be editable
         let mostPopularProducts= this.availableProducts.slice();
         return mostPopularProducts.filter((product: Product) => product.price >210);
+    }
 
+    addCartProduct(product: Product) {
+        this.cartProducts.push(product);
+        let i = this.cartProducts.length
+        this.countChange.next(i);
+        console.log(this.cartProducts);
+    }
+
+    getOrderProducts() {
+        let orderProducts = this.cartProducts.slice();
+        return orderProducts;
     }
 }

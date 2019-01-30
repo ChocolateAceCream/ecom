@@ -16,4 +16,8 @@ export class MostPopularComponent implements OnInit {
         this.products = this.productService.getMostPopularProducts();
     }
 
+    addToCart(product: Product) {
+        this.productService.addCartProduct(product);
+    }
+
 }

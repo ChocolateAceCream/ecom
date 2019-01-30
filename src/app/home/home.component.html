@@ -1,12 +1,25 @@
-<mat-tab-group>
-    <mat-tab label="Most Popular">
-        <app-most-popular></app-most-popular>
-    </mat-tab>
-    <mat-tab label="New Release">
-        <app-new-release></app-new-release>
-    </mat-tab>
-    <mat-tab label="View all">
-        app-view-all
-        <app-view-all></app-view-all>
-    </mat-tab>
-</mat-tab-group>
+<mat-sidenav-container>
+    <mat-sidenav
+        mode="side"
+        opened >
+        <div class="side-nav-content">
+            <app-sidenav-list></app-sidenav-list>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="inside">
+            <mat-tab-group>
+                <mat-tab label="Most Popular">
+                    <app-most-popular></app-most-popular>
+                </mat-tab>
+                <mat-tab label="New Release">
+                    <app-new-release></app-new-release>
+                </mat-tab>
+                <mat-tab label="View all">
+                    app-view-all
+                    <app-view-all></app-view-all>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

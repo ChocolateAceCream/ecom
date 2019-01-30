@@ -2,17 +2,4 @@
     <app-slide></app-slide>
     <app-header></app-header>
 </div>
-<mat-sidenav-container>
-    <mat-sidenav
-        mode="side"
-        opened >
-        <div class="side-nav-content">
-            <app-sidenav-list></app-sidenav-list>
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="inside">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<router-outlet></router-outlet>

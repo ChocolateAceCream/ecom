@@ -24,6 +24,8 @@ import { ViewAllComponent } from './product-list/view-all/view-all.component';
 
 import { AuthService } from './auth/auth.service';
 import { ProductService } from './product-list/product.service';
+import { CartComponent } from './order/cart/cart.component';
+import { WishComponent } from './order/wish/wish.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +40,8 @@ import { ProductService } from './product-list/product.service';
         MostPopularComponent,
         NewReleaseComponent,
         ViewAllComponent,
+        CartComponent,
+        WishComponent,
     ],
     imports: [
         BrowserModule,

@@ -36,6 +36,21 @@ a:active {
 	overflow: hidden;
 }
 .searchBox:focus {
-    width:400px;
-    color: red;
+	width:400px;
+	color: red;
+}
+
+.shopping-cart-number {
+	color:blue;
+	font-size:80%;
+	background-color:#e74c3c;
+	position:absolute;
+	top:50%;
+	line-height: 20px;
+	left:70%;
+	-webkit-transform:translate(-50%,-90%);
+	-moz-transform:translate(-50%,-90%);
+	transform:translate(-50%,-90%);
+	padding:0 12%;
+	border-radius:1000px;
 }

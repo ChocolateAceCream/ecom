@@ -1,0 +1,19 @@
+mat-sidenav-container,mat-sidenav, mat-sidenav-content {
+    height: 100%;
+}
+
+mat-sidenav {
+   width: 250px;
+}
+
+.side-nav-content {
+    margin: 25px;
+    width: 200px;
+    max-height: 75vh;
+    overflow: auto;
+    background: rgba(0,0,0,.2);
+}
+
+.inside {
+    margin: 25px;
+}

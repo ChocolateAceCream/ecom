@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
+import { ProductService } from '../../product-list/product.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,18 +9,24 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-    constructor(private authService: AuthService){}
+    constructor(private authService: AuthService, private productService: ProductService){}
+    private count: number = 0;
     isAuth = false;
     authSubscription: Subscription;
+    countSubscription: Subscription;
 
     ngOnInit() {
         this.authSubscription = this.authService.authChange.subscribe(authStatus => {
             this.isAuth = authStatus;
         });
+        this.countSubscription = this.productService.countChange.subscribe(productCount => {
+            this.count = productCount;
+        });
     }
 
     ngOnDestroy() {
         this.authSubscription.unsubscribe();
+        this.countSubscription.unsubscribe();
     }
 
     onLogout() {

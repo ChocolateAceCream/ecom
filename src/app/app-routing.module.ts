@@ -8,15 +8,17 @@ import { NewReleaseComponent } from './product-list/new-release/new-release.comp
 import { ViewAllComponent } from './product-list/view-all/view-all.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CartComponent } from './order/cart/cart.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'most-popular', component: MostPopularComponent },
-    { path: 'new-release', component: NewReleaseComponent,canActivate: [AuthGuard] },
-    { path: 'view-all', component: ViewAllComponent },
+    //{ path: 'most-popular', component: MostPopularComponent },
+    //{ path: 'new-release', component: NewReleaseComponent,canActivate: [AuthGuard] },
+    //{ path: 'view-all', component: ViewAllComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'cart', component: CartComponent },
     { path: 'password-reset', component: PasswordResetComponent }
 ];
 

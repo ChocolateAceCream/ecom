@@ -12,7 +12,7 @@
             <div flex fxlayout>
                 <mat-form-field fxLayoutAlign="center">
                     <!-- customize to multiple selector later -->
-                    <mat-select placeholder="Select Size">
+                    <mat-select placeholder="Select Size" #selectedSize>
                         <mat-option *ngFor="let size of product.size" [value]="size">
                             {{size}}
                         </mat-option>
@@ -22,7 +22,8 @@
                     <button mat-icon-button >
                         <mat-icon>favorite_border</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="addToCart(product)" >
+                    <button mat-icon-button
+                        (click)="addToCart(product,selectedSize.selected.value)" >
                         <mat-icon>shopping_cart</mat-icon>
                     </button>
                 </div>

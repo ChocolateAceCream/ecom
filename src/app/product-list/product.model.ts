@@ -5,5 +5,6 @@ export interface Product {
     brand: string;
     size: number[];
     url: string;
+    qty?: number;
     //state?: 'complete' | 'cart' | 'wish';
 }

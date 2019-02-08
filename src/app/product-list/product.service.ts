@@ -19,6 +19,8 @@ export class ProductService {
     private cartProducts: Product[] = [];
 
     countChange = new Subject<number>();
+    orderChange = new Subject<number>();
+    //orderChange = new Subject<Product[]>();
 
     getMostPopularProducts() {
         //the slice method will create a new copy of array,so original one wont
@@ -30,12 +32,28 @@ export class ProductService {
     addCartProduct(product: Product) {
         this.cartProducts.push(product);
         let i = this.cartProducts.length
+        this.orderChange.next(i);
+        //this.orderChange.next(this.cartProducts.slice());
         this.countChange.next(i);
-        console.log(this.cartProducts);
     }
 
     getOrderProducts() {
         let orderProducts = this.cartProducts.slice();
-        return orderProducts;
+        let temp = orderProducts.slice();
+        for(let i = 0; i<orderProducts.length;i++){
+            let count=0;
+            for(let j =0; j<orderProducts.length;j++){
+                if(JSON.stringify(temp[j]) === JSON.stringify(temp[i])){
+                    count++;
+                }
+            }
+            orderProducts[i].qty=count;
+        }
+
+        let uniq={};
+        let filtered = orderProducts.filter(obj => !uniq[obj.id+obj.size[0]]&&(uniq[obj.id+obj.size[0]]=true));
+
+        //console.log(filtered);
+        return filtered;
     }
 }

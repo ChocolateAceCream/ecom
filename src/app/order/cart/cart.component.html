@@ -1,13 +1,126 @@
 <div class='container' >
+    <div><br></div>
     <div class="head">
-        <h1>Cart: $50</h1>
+        <h1>Cart: ${{sum}}</h1>
     </div>
     <div class="content" fxLayout.xs="column" fxLayout="row">
         <div fxFlex="61.8" class="sec1">
-            first-section
+            <mat-card class="card" fxLayoutGap="30px" *ngFor="let product of orderProducts">
+                <mat-card-header>
+                    <mat-card-title>{{product.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content fxLayout="row">
+                    <div>
+                        <img
+                                  [src]="product.url"
+                                  [alt]="product.name"
+                                  style="background-size:cover; height: 100px; width:
+                                  100px">
+                    </div>
+                    <div style="min-width:100%">
+                        <mat-list>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Size:
+                                    </div>
+                                    <div>
+                                        {{product.size[0]}}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Qty:
+                                    </div>
+                                    <div>
+                                        {{product.qty}}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Unit Price:
+                                    </div>
+                                    <div>
+                                        ${{product.price}}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions fxLayout="row">
+                    <div flex fxlayout>
+                        <div fxLayoutAlign="flex-end">
+                            <button mat-icon-button >
+                                <mat-icon>delete</mat-icon> |
+                            </button>
+                            <button mat-icon-button >
+                                <mat-icon>edit</mat-icon> |
+                            </button>
+                            <button mat-icon-button >
+                                <mat-icon>favorite_border</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
         </div>
         <div fxFlex="38.2" class="sec2" >
-            second-section
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title>Order Summary</mat-card-title>
+                </mat-card-header>
+                <mat-card-content fxLayout="row">
+                    <div style="min-width:100%">
+                        <mat-list>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Subtotal:
+                                    </div>
+                                    <div>
+                                        {{sum}}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Estimate Shipping
+                                    </div>
+                                    <div>
+                                        TBD
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Discount:
+                                    </div>
+                                    <div>
+                                        $0
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <div class="text">
+                                    <div>
+                                        Estimated Total:
+                                    </div>
+                                    <div>
+                                        {{Sum}}
+                                    </div>
+                                </div>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 </div>

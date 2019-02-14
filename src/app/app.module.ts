@@ -25,6 +25,7 @@ import { ViewAllComponent } from './product-list/view-all/view-all.component';
 import { AuthService } from './auth/auth.service';
 import { ProductService } from './product-list/product.service';
 import { CartComponent } from './order/cart/cart.component';
+import { DialogComponent } from './order/cart/dialog.component';
 import { WishComponent } from './order/wish/wish.component';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { WishComponent } from './order/wish/wish.component';
         NewReleaseComponent,
         ViewAllComponent,
         CartComponent,
+        DialogComponent,
         WishComponent,
     ],
     imports: [
@@ -55,6 +57,10 @@ import { WishComponent } from './order/wish/wish.component';
     ],
     //provide service in app module so entire app use same instance
     providers: [AuthService,ProductService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+
+    //this array contained component that angular will never know where and when it would
+    //be used, neither as selector in template nor the routing module.
+    entryComponents: [DialogComponent]
 })
 export class AppModule { }

@@ -26,7 +26,7 @@ export class ProductService {
         //the slice method will create a new copy of array,so original one wont
         //be editable
         let mostPopularProducts= this.availableProducts.slice();
-        return mostPopularProducts.filter((product: Product) => product.price >210);
+        return mostPopularProducts.filter((product: Product) => product.price >100);
     }
 
     addCartProduct(product: Product) {

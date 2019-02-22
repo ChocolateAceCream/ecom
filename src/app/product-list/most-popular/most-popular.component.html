@@ -1,33 +1,41 @@
 <section class="most-popular" fxLayout="row wrap" fxLayoutAlign="space-around
-                                                  center" fxLayout.xs="column">
-    <mat-card fxFlex="250px" *ngFor="let product of products"
-              style="margin:20px;">
-        <mat-card-header>
-            <mat-card-title>{{product.name}}</mat-card-title>
-            <mat-card-subtitle>${{product.price}}</mat-card-subtitle>
-        </mat-card-header>
-        <img [src]="product.url" [alt]="product.name"
-              style="background-size:cover; height: 150px; width: 100%">
-        <mat-card-actions>
-            <div flex fxlayout>
-                <mat-form-field fxLayoutAlign="center">
-                    <!-- customize to multiple selector later -->
-                    <mat-select placeholder="Select Size" #selectedSize>
-                        <mat-option *ngFor="let size of product.size" [value]="size">
-                            {{size}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div fxLayoutAlign="flex-end">
-                    <button mat-icon-button >
-                        <mat-icon>favorite_border</mat-icon>
-                    </button>
-                    <button mat-icon-button
-                        (click)="addToCart(product,selectedSize.selected.value)" >
-                        <mat-icon>shopping_cart</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </mat-card-actions>
-    </mat-card>
+												  center" fxLayout.xs="column">
+	<mat-card fxFlex="250px" *ngFor="let product of obs | async"
+		   style="margin:20px;">
+		<mat-card-header>
+			<mat-card-title>{{product.name}}</mat-card-title>
+			<mat-card-subtitle>${{product.price}}</mat-card-subtitle>
+		</mat-card-header>
+		<img [src]="product.url" [alt]="product.name"
+	 style="background-size:cover; height: 150px; width: 100%">
+		<mat-card-actions>
+			<div flex fxlayout>
+				<mat-form-field fxLayoutAlign="center">
+					<!-- customize to multiple selector later -->
+					<mat-select placeholder="Select Size" #selectedSize>
+						<mat-option *ngFor="let size of product.size" [value]="size">
+							{{size}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<div fxLayoutAlign="flex-end">
+					<button mat-icon-button >
+						<mat-icon>favorite_border</mat-icon>
+					</button>
+					<button mat-icon-button
+		 (click)="addToCart(product,selectedSize.selected.value)" >
+		 <mat-icon>shopping_cart</mat-icon>
+					</button>
+				</div>
+			</div>
+		</mat-card-actions>
+	</mat-card>
+	<mat-paginator #paginator class="mat-paginator"
+                           fxLayoutAlign="start"
+						   [length]="length"
+						   [pageIndex]="pageIndex"
+						   [pageSize]="pageSize"
+						   [pageSizeOptions]="[5, 10, 25, 100]"
+						   (page)="pageEvent = $event; pageChange($event)"
+						   ></mat-paginator>
 </section>

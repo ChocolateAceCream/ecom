@@ -37,7 +37,7 @@ a:active {
 }
 .searchBox:focus {
 	width:400px;
-	color: red;
+	color: black;
 }
 
 .shopping-cart-number {

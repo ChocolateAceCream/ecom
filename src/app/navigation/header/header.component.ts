@@ -32,4 +32,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     onLogout() {
         this.authService.logout();
     }
+
+    doFilter(filterValue: string) {
+        this.productService.doFilter(filterValue);
+    }
 }

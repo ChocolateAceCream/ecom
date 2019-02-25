@@ -23,7 +23,8 @@
 
         <div fxLayoutAlign="flex-end" fxHide.xs>
             <div fxLayout class="searchContainer">
-                <input matInput placeholder="Search..." class="searchBox">
+                <input matInput placeholder="Search..." class="searchBox"
+                (keyup)="doFilter($event.target.value)">
                 <button mat-icon-button >
                     <mat-icon>search</mat-icon>
                 </button>

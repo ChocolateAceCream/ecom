@@ -20,7 +20,13 @@ export class ProductService {
 
     countChange = new Subject<number>();
     orderChange = new Subject<number>();
+    filterString = new Subject<string>();
     //orderChange = new Subject<Product[]>();
+
+    doFilter(filter: string) {
+        console.log(filter);
+        this.filterString.next(filter);
+    }
 
     getMostPopularProducts() {
         //the slice method will create a new copy of array,so original one wont

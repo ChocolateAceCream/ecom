@@ -14,6 +14,7 @@ import {
     MatSelectModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatExpansionModule,
     MatCheckboxModule
 } from '@angular/material';
 
@@ -33,6 +34,7 @@ import {
         MatSelectModule,
         MatDialogModule,
         MatPaginatorModule,
+        MatExpansionModule,
         MatInputModule
     ],
     exports: [
@@ -50,6 +52,7 @@ import {
         MatSelectModule,
         MatDialogModule,
         MatPaginatorModule,
+        MatExpansionModule,
         MatInputModule
     ]
 })

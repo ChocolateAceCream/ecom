@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./sidenav-list.component.css']
 })
 export class SidenavListComponent implements OnInit {
+
     constructor() { }
 
     ngOnInit() {
     }
+
 }

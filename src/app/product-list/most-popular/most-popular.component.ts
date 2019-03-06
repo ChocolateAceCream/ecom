@@ -3,6 +3,7 @@ import { ViewChild,Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
 import { Observable,Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
     selector: 'app-most-popular',
@@ -10,10 +11,10 @@ import { Observable,Subscription } from 'rxjs';
     styleUrls: ['./most-popular.component.css']
 })
 export class MostPopularComponent implements OnInit, OnDestroy {
-    products: Product[] = [];
+    //products: Product[] = [];
     length = 0;
     pageIndex = 0;
-    pageSize = 5;
+    pageSize = 10;
     pageEvent: PageEvent;
 
     obs: Observable<any>;
@@ -22,16 +23,19 @@ export class MostPopularComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private productService: ProductService) { }
-
-    ngOnInit() {
-        this.products = this.productService.getMostPopularProducts();
-        this.dataSource.data = this.products;
+    constructor(private productService: ProductService) {
         this.obs = this.dataSource.connect();
+        console.log(this.obs);
+        this.dataSource.data = this.productService.getMostPopularProducts();
         this.dataSource.paginator = this.paginator;
         this.filterSubscription = this.productService.filterString.subscribe(filter => {
             this.dataSource.filter = filter.trim().toLowerCase();
+            //this.dataSource.filter = 'AJ1'.trim().toLowerCase();
         });
+    }
+
+    ngOnInit() {
+        //delay(2);
     }
 
     addToCart(product: Product, size: number) {
@@ -42,6 +46,7 @@ export class MostPopularComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         if (this.dataSource) { this.dataSource.disconnect();}
+        this.filterSubscription.unsubscribe();
     }
 
     doFilter() {

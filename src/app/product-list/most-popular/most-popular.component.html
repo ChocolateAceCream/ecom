@@ -30,13 +30,14 @@
 			</div>
 		</mat-card-actions>
 	</mat-card>
-	<mat-paginator
-		 #paginator class="mat-paginator"
-		 fxLayoutAlign="start"
-		 [length]="length"
-		 [pageIndex]="pageIndex"
-		 [pageSize]="pageSize"
-		 [pageSizeOptions]="[5, 10, 25, 100]"
-		 (page)="pageEvent = $event; pageChange($event)"
-	></mat-paginator>
 </section>
+<mat-paginator
+     #paginator class="mat-paginator"
+     fxLayoutAlign="start"
+     fxFlext="600px"
+     [length]="length"
+     [pageIndex]="pageIndex"
+     [pageSize]="pageSize"
+     [pageSizeOptions]="[10, 20, 50, 100]"
+     (page)="pageEvent = $event; pageChange($event)"
+></mat-paginator>

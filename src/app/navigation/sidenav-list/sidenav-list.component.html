@@ -1,14 +1,30 @@
 <mat-nav-list>
-    <a mat-list-item routerLink="/signup" (click)="onClose()">
-        <mat-icon>face</mat-icon>
-        <span class="nav-caption">Singup</span>
-    </a>
-    <a mat-list-item routerLink="/login" (click)="onClose()">
-        <mat-icon>input</mat-icon>
-        <span class="nav-caption">Login</span>
-    </a>
-    <a mat-list-item routerLink="/home" (click)="onClose()">
-        <mat-icon>eject</mat-icon>
-        <span class="nav-caption">Log out</span>
-    </a>
+    <div class="title">Show Results for</div>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                select size
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px" >
+            <mat-checkbox>11.5</mat-checkbox>
+            <mat-checkbox>11</mat-checkbox>
+            <mat-checkbox>10.5</mat-checkbox>
+            <mat-checkbox>10</mat-checkbox>
+            <mat-checkbox>9.5 &nbsp;</mat-checkbox>
+            <mat-checkbox>9</mat-checkbox>
+            <mat-checkbox>8.5 &nbsp;</mat-checkbox>
+            <mat-checkbox>8</mat-checkbox>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                select brand
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-checkbox >Adidas</mat-checkbox>
+        <mat-checkbox >Air Jordan</mat-checkbox>
+    </mat-expansion-panel>
+    <button color="primary" type="submit">Apply</button>
 </mat-nav-list>

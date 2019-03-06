@@ -11,7 +11,7 @@ mat-sidenav {
     width: 200px;
     max-height: 75vh;
     overflow: auto;
-    background: rgba(0,0,0,.2);
+    //background: rgba(0,0,0,.2);
 }
 
 .inside {

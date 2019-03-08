@@ -9,7 +9,7 @@ mat-sidenav {
 .side-nav-content {
     margin: 25px;
     width: 200px;
-    max-height: 75vh;
+    //max-height: 75vh;
     overflow: auto;
     //background: rgba(0,0,0,.2);
 }

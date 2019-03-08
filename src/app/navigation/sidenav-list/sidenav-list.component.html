@@ -7,14 +7,9 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px" >
-            <mat-checkbox>11.5</mat-checkbox>
-            <mat-checkbox>11</mat-checkbox>
-            <mat-checkbox>10.5</mat-checkbox>
-            <mat-checkbox>10</mat-checkbox>
-            <mat-checkbox>9.5 &nbsp;</mat-checkbox>
-            <mat-checkbox>9</mat-checkbox>
-            <mat-checkbox>8.5 &nbsp;</mat-checkbox>
-            <mat-checkbox>8</mat-checkbox>
+            <div *ngFor="let data of sizes">
+                <mat-checkbox (change)="onChange(data,$event)" >{{data.size}}</mat-checkbox>
+            </div>
         </div>
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="true">
@@ -23,8 +18,13 @@
                 select brand
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-checkbox >Adidas</mat-checkbox>
-        <mat-checkbox >Air Jordan</mat-checkbox>
+        <div *ngFor="let data of brands">
+            <mat-checkbox (change)="onChange(data,$event)" >{{data.name}}</mat-checkbox>
+        </div>
     </mat-expansion-panel>
-    <button color="primary" type="submit">Apply</button>
+    <div class="button">
+        <button mat-stroked-button color="primary" (click)="onFilter()">Apply</button>
+        &nbsp;
+        <button mat-stroked-button color="accent" (click)="onReset()">Reset</button>
+    </div>
 </mat-nav-list>

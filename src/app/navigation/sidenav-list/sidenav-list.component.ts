@@ -30,8 +30,12 @@ export class SidenavListComponent implements OnInit {
 
     onChange(data, $event) {
         data.checked = $event.checked;
-        console.log(data);
+        //console.log(data);
         //console.log(this.brandAdidas, this.brandAirJordan, this.size11h);
+    }
+
+    onFilter() {
+       console.log(this.sizes, this.brands);
     }
 
 	onReset() {

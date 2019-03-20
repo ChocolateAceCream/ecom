@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../product-list/product.service';
 
 @Component({
     selector: 'app-sidenav-list',
@@ -15,15 +16,17 @@ export class SidenavListComponent implements OnInit {
         {size: "9", checked: false},
         {size: "8.5 ", checked: false},
         {size: "8", checked: false},
-        {size: "7.5 ", checked: false}
+        {size: "7.5 ", checked: false},
+        {size: "7 ", checked: false}
     ];
 
     brands = [
         {name: "adidas", checked: false},
-        {name: "airJordan", checked: false}
+        {name: "Air Jordan", checked: false},
+        {name: "Off White", checked: false}
     ];
 
-    constructor() { }
+    constructor(private productService: ProductService) { }
 
     ngOnInit() {
     }
@@ -35,7 +38,23 @@ export class SidenavListComponent implements OnInit {
     }
 
     onFilter() {
-       console.log(this.sizes, this.brands);
+        let filterObj = {
+            name: [],
+            brand: [],
+            size: [],
+            topFilter: false
+        }
+        this.sizes.forEach(element => {
+            if (element.checked) {
+                filterObj.size.push(element.size);
+            }
+        })
+        this.brands.forEach(element => {
+            if (element.checked) {
+                filterObj.brand.push(element.name);
+            }
+        })
+        this.productService.doSideFilter(filterObj);
     }
 
 	onReset() {
@@ -45,6 +64,13 @@ export class SidenavListComponent implements OnInit {
         this.brands.forEach((element) => {
             element.checked = false;
         })
+        let filterObj = {
+            name: [],
+            brand: [],
+            size: [],
+            topFilter: false
+        }
+        this.productService.doSideFilter(filterObj);
     }
 
 }

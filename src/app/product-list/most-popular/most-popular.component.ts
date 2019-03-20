@@ -26,8 +26,11 @@ export class MostPopularComponent implements OnInit, OnDestroy {
 		this.obs = this.dataSource.connect();
 		this.dataSource.data = this.productService.getMostPopularProducts();
 		this.dataSource.paginator = this.paginator;
-		this.filterSubscription = this.productService.filterString.subscribe(filter => {
-			this.dataSource.filter = filter.trim().toLowerCase();
+
+        this.dataSource.filterPredicate = this.customFilterPredicate();
+
+		this.filterSubscription = this.productService.filterObj.subscribe(filterObj => {
+			this.dataSource.filter = JSON.stringify(filterObj);
 			//this.dataSource.filter = 'AJ1'.trim().toLowerCase();
 		});
 
@@ -35,6 +38,51 @@ export class MostPopularComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 	}
+
+    customFilterPredicate() {
+        const myFilterPredicate = function(data: Product, filter: string ):boolean{
+            let searchString = JSON.parse(filter);
+            //indexOf will return -1 if there's no match
+            let sizeFound = true;
+            //if size not empty or undefined
+            if (searchString.size !== undefined && searchString.size.length !==0) {
+                for(let n of searchString.size) {
+                    if(!data.size.includes(Number(n))){
+                        sizeFound = false;
+                        break;
+                    }
+                }
+            }
+
+            let brandFound = true;
+            if (searchString.brand !== undefined && searchString.brand.length !==0) {
+                for(let n of searchString.brand) {
+                    console.log(data.brand,n.toLowerCase);
+                    if(data.brand.toLowerCase().trim().indexOf(n.toLowerCase().trim())==-1){
+                        brandFound = false;
+                        break;
+                    }
+                }
+            }
+
+            let nameFound = true;
+            if (searchString.name !== undefined && searchString.name.length !==0) {
+                for(let n of searchString.name) {
+                    if(data.name.toLowerCase().trim().indexOf(n.toLowerCase().trim())==-1){
+                        nameFound = false;
+                        break;
+                    }
+                }
+            }
+
+            if(searchString.topFilter) {
+                return nameFound || brandFound || sizeFound
+            } else {
+                return nameFound && brandFound && sizeFound
+            }
+        }
+        return myFilterPredicate;
+    }
 
 	addToCart(product: Product, size: number) {
 		let p = Object.assign({},product)
